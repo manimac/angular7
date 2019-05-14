@@ -1,3 +1,20 @@
-<div>
-  hi this is home component
+<style>
+  .active{
+    background: red;
+  }
+</style>
+<div *ngIf="showDiv">
+  hi this is home component <br>{{service}}
 </div>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Age</th>
+  </thead>
+  <tr *ngFor="let stu of testArr">
+    <td>{{stu.name}}</td>
+    <td>{{stu.age}}</td>
+  </tr>
+</table>
+<div [ngClass]="{'active':showClass}">fsdfsdf</div>
+<div [ngStyle]="styleProp">sakdnffmklf</div>
