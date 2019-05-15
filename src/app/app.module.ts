@@ -6,6 +6,9 @@ import { HomeComponent } from './home.component';
 import { AboutComponent } from './about.component';
 import { HeaderComponent } from './header.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { customFilter } from './customFilter';
+import { uppercaseFilter } from './customFilter';
 
 const app : Routes = [
   {
@@ -25,11 +28,14 @@ const app : Routes = [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    HeaderComponent
+    HeaderComponent,
+    customFilter,
+    uppercaseFilter
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(app)
+    RouterModule.forRoot(app),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

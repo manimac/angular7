@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { customService } from './customservice';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'home-root',
@@ -8,8 +9,8 @@ import { customService } from './customservice';
 })
 export class HomeComponent {
   private service;
-  private testArr;showDiv;showClass;styleProp;
-  constructor (private _customService : customService){
+  private testArr;showDiv;showClass;styleProp;price1;price2;price3;
+  constructor (private _customService : customService,private _http:HttpClient){
     _customService.setValue('test the service');
     this.service = _customService.getContent();
     this.testArr = [
@@ -32,7 +33,18 @@ export class HomeComponent {
       background:'green',
       color:'white'
     }
+    this.getUsers();
+    this.price1 = 20;
+    this.price2 = 30;
+    this.price3 = 50;
   }
   
+  getUsers(){
+    this._http.get('http://localhost:4200/assets/test.txt')
+    .subscribe((data)=>{
+      console.log(data)
+      this.testArr = data;
+    })
+  }
   
 }
